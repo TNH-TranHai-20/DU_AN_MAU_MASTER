@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:paddingHorizontal="10dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/khung1"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UPDATE"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/lblMaTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mã Thành Viên: "
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/txtTenTV_Up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên"
+
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="5dp"
+            android:padding="10dp"/>
+        <EditText
+            android:id="@+id/txtNamSinh_Up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập năm sinh"
+
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="5dp"
+            android:padding="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnHuy_TV"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="Hủy"
+                android:textColor="#8692F7"
+                android:background="#00000000"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnThem_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu"
+                android:textColor="#8692F7"
+                android:background="#00000000"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

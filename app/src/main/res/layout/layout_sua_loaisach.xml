@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/khung1"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UPDATE"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/lblMaLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mã Loại: "
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/txtTenLoai_Up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên loại"
+            android:layout_marginHorizontal="15dp"
+            android:drawableStart="@drawable/bookitem"
+            android:padding="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnHuy_LS"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="Hủy"
+                android:textColor="#8692F7"
+                android:background="#00000000"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnUpdate_LS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu"
+                android:textColor="#8692F7"
+                android:background="#00000000"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_qlpm"
+            android:title="Quản lý Phiếu Mượn"
+            android:icon="@drawable/phieumuon"
+            />
+        <item
+            android:id="@+id/item_qlls"
+            android:title="Quản lý Loại Sách"
+            android:icon="@drawable/lsiconnav"
+            />
+        <item
+            android:id="@+id/item_qls"
+            android:title="Quản lý Sách"
+            android:icon="@drawable/bookiconav"
+            />
+        <item
+            android:id="@+id/item_qltv"
+            android:title="Quản lý Thành Viên"
+            android:icon="@drawable/thanhvien"
+            />
+    </group>
+    <item android:title="Thống Kê">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_top10"
+                    android:title="Top 10 sách mượn nhiều nhất"
+                    android:icon="@drawable/top10"
+                    />
+                <item
+                    android:id="@+id/item_doanhthu"
+                    android:title="Doanh thu"
+                    android:icon="@drawable/doanhthu"
+                    />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Người dùng">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_themthuthu"
+                    android:title="Thêm thủ thư"
+                    android:icon="@drawable/themthuthu"
+                    android:visible="true"
+                    />
+                <item
+                    android:id="@+id/item_doimatkhau"
+                    android:title="Đổi mật khẩu"
+                    android:icon="@drawable/doimatkhau"
+                    />
+                <item
+                    android:id="@+id/item_dangxuat"
+                    android:title="Đăng xuất"
+                    android:icon="@drawable/dangxuat"
+                    />
+            </group>
+        </menu>
+    </item>
+</menu>
