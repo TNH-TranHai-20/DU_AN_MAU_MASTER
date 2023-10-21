@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ import com.example.du_an_mau_master.model.Sach;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Fragment_Sach extends Fragment {
     RecyclerView rcvSach;
@@ -41,6 +44,8 @@ public class Fragment_Sach extends Fragment {
     EditText txtTenSach, txtGiaThue;
     Spinner spnLoaiSach;
     int index;
+    SearchView Sview;
+
 
     public Fragment_Sach() {
         // Required empty public constructor
@@ -51,10 +56,13 @@ public class Fragment_Sach extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment__sach, container, false);
+        Button btntangdan = view.findViewById(R.id.btnTangdan);
+        Button btngiamdan = view.findViewById(R.id.btnGiamdan);
         rcvSach = view.findViewById(R.id.rcvSach);
         flt_btn_Them = view.findViewById(R.id.flt_btn_Them);
         daoSach = new daoSach(getContext());
         daoLoaiSach = new daoLoaiSach(getContext());
+        Sview =view.findViewById(R.id.searchView);
         list = daoSach.selectAll();
         adapterSach = new adapterSach(getContext(), list);
         //
@@ -70,6 +78,110 @@ public class Fragment_Sach extends Fragment {
             }
         });
         //
+        btntangdan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(list, new Comparator<Sach>() {
+                    @Override
+                    public int compare(Sach o1, Sach o2) {
+                        if (o1.getGiaThue()> o2.getGiaThue()){
+                            return -1;
+                        }else {
+                            if (o1.getGiaThue()==o2.getGiaThue()){
+                                return 0;
+                            }else {
+                                return 1;
+                            }
+                        }
+                    }
+                });
+                adapterSach=new adapterSach(getContext(),list);
+                rcvSach.setAdapter(adapterSach);
+            }
+        });
+
+        btngiamdan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(list, new Comparator<Sach>() {
+                    @Override
+                    public int compare(Sach o1, Sach o2) {
+                        if (o1.getGiaThue()> o2.getGiaThue()){
+                            return 1;
+                        }else {
+                            if (o1.getGiaThue()==o2.getGiaThue()){
+                                return 0;
+                            }else {
+                                return -1;
+                            }
+                        }
+                    }
+                });
+                adapterSach=new adapterSach(getContext(),list);
+                rcvSach.setAdapter(adapterSach);
+
+            }
+        });
+
+        Sview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList = new ArrayList<>();
+                if (query.length() > 0) {
+                    for(int i = 0; i < list.size(); i++) {
+                        if(list.get(i).getTenSach().toUpperCase().contains(query.toUpperCase())) {
+                            Sach s = new Sach();
+                            s.setMaSach(list.get(i).getMaSach());
+                            s.setTenSach(list.get(i).getTenSach());
+                            s.setGiaThue(list.get(i).getGiaThue());
+                            s.setTenLoai(list.get(i).getTenLoai());
+                            searchList.add(s);
+                        }
+                    }
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    rcvSach.setLayoutManager(linearLayoutManager);
+                    adapterSach = new adapterSach(getContext(), searchList);
+                    rcvSach.setAdapter(adapterSach);
+                    adapterSach.notifyDataSetChanged();
+                } else {
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    rcvSach.setLayoutManager(linearLayoutManager);
+                    adapterSach = new adapterSach(getContext(), list);
+                    rcvSach.setAdapter(adapterSach);
+                    adapterSach.notifyDataSetChanged();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList = new ArrayList<>();
+                if (newText.length() > 0) {
+                    for(int i = 0; i < list.size(); i++) {
+                        if(list.get(i).getTenSach().toUpperCase().contains(newText.toUpperCase())) {
+                            Sach s = new Sach();
+                            s.setMaSach(list.get(i).getMaSach());
+                            s.setTenSach(list.get(i).getTenSach());
+                            s.setGiaThue(list.get(i).getGiaThue());
+                            s.setTenLoai(list.get(i).getTenLoai());
+                            searchList.add(s);
+                        }
+                    }
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    rcvSach.setLayoutManager(linearLayoutManager);
+                    adapterSach = new adapterSach(getContext(), searchList);
+                    rcvSach.setAdapter(adapterSach);
+                    adapterSach.notifyDataSetChanged();
+                } else {
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    rcvSach.setLayoutManager(linearLayoutManager);
+                    adapterSach = new adapterSach(getContext(), list);
+                    rcvSach.setAdapter(adapterSach);
+                    adapterSach.notifyDataSetChanged();
+                }
+                return false;
+            }
+        });
 
         return view;
     }
@@ -110,10 +222,10 @@ public class Fragment_Sach extends Fragment {
                 String giaThue = txtGiaThue.getText().toString();
 
                 if(tenSach.isEmpty() || giaThue.isEmpty() || loaiSachArr.isEmpty()) {
-                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else {
                     if(giaThue.matches("\\d+") == false) {
-                        Toast.makeText(getContext(), "Giá tiền sai định dạng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Giá tiền sai ", Toast.LENGTH_SHORT).show();
                     } else if(Integer.valueOf(giaThue) < 0) {
                         Toast.makeText(getContext(), "Giá tiền phải lớn hơn 0", Toast.LENGTH_SHORT).show();
                     }

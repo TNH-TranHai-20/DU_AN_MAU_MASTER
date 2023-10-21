@@ -6,12 +6,39 @@
     android:layout_height="760dp"
     android:background="#0D000000"
     tools:context=".fragment.Fragment_Sach">
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:iconifiedByDefault="false"
+        android:paddingHorizontal="5dp"
+        app:queryHint="Tìm kiếm" />
+    <Button
+        android:id="@+id/btnGiamdan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Sắp xếp giá giảm dần "
+        android:layout_marginLeft="5dp"
+
+        />
+    <Button
+        android:id="@+id/btnTangdan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sắp xếp giá tăng dần "
+        android:layout_marginTop="45dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="5dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvSach"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="55dp"
-        android:padding="10dp"/>
+        android:layout_height="704dp"
+        android:layout_marginTop="90dp"
+        android:padding="10dp" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/flt_btn_Them"
         android:layout_width="wrap_content"
